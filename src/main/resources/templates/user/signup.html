@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>アカウント作成</title>
+  <!-- stylesheet-->
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" >
+	<link th:href="@{/css/login/login.css}" rel="stylesheet" >
+  <!-- stylesheet END-->
+</head>
+<body class="bg-light">
+  <section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <!--　タイトル　-->
+                <h2 class="fw-bold mb-2 text-uppercase" th:text="#{user.signup.title}"></h2>
+                <!-- タイトル下メッセージ-->
+                <p class="text-white-50 mb-5" th:text="#{user.signup.message}"></p>
+                <form method="post" th:action="@{/user/signup}" class="form-signup" th:object="${signupForm}">
+                  <!--　ユーザID -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:errors="*{userId}"></div>
+                    <input type="text" class="form-control form-control-lg" th:field="*{userId}" th:errorclass="is-invalid"/>
+                    <label class="form-label" th:for="*{userId}" th:text="#{userId}"></label>
+                  </div>
+                  <!--　パスワード -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:errors="*{password}"></div>
+                    <input type="password" class="form-control form-control-lg" th:field="*{password}" th:errorclass="is-invalid"/>
+                    <label class="form-label" th:for="*{password}" th:text="#{password}"></label>
+                  </div>
+                  <!-- ユーザ名 -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:errors="*{userName}"></div>
+                    <input type="text" class="form-control form-control-lg" th:field="*{userName}" th:errorclass="is-invalid"/>
+                    <label class="form-label" th:for="*{userName}" th:text="#{userName}" ></label>
+                  </div>
+                  <!-- 誕生日（生年月日） -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:errors="*{birthday}"></div>
+                    <input type="text" class="form-control form-control-lg" placeholder="yyyy/MM/dd" th:field="*{birthday}" th:errorclass="is-invalid"/>
+                    <label class="form-label" th:for="*{birthday}" th:text="#{birthday}"></label>
+                  </div>
+                  <!-- 年齢 -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:errors="*{age}"></div>
+                    <input type="text"  class="form-control form-control-lg" th:field="*{age}" th:errorclass="is-invalid"/>
+                    <label class="form-label" th:for="*{age}" th:text="#{age}"></label>
+                  </div>
+                  <!-- 性別 -->
+                  <div class="form-outline form-white mb-4">
+                    <div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+                    <div th:each="item : ${genderMap}" class="form-check-inline" >
+                        <input type="radio"class="form-check-input" th:value="${item.value}" th:field="*{gender}" th:errorclass="is-invalid"/>
+                        <label class="form-check-label" th:for="*{gender}" th:text="${item.key}"></label>
+                    </div>
+                  </div>
+                  <!-- 新規作成ボタン -->
+                  <input class="btn btn-outline-light btn-lg px-5" type="submit" th:value="#{user.signup.btn}"/>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- script-->
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <!-- script END-->
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>ログイン</title>
+    <!-- stylesheet-->
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" >
+	<link th:href="@{/css/login/login.css}" rel="stylesheet" >
+</head>
+<body class="bg-light">
+    <section class="gradient-custom">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                  <div class="mb-md-5 mt-md-4 pb-5">
+      
+                    <h2 class="fw-bold mb-2 text-uppercase">ログイン</h2>
+                    <p class="text-white-50 mb-5">ログインして新たな旅に出ましょう!</p>
+                    
+                    <form method="post" th:action="@{/login}" class="form-login">
+
+                        <!--　ユーザID -->
+                        <div class="form-outline form-white mb-4">
+                        <input type="text" name="userId" id="userId" class="form-control form-control-lg" />
+                        <label class="form-label" for="userId">ユーザID</label>
+                        </div>
+        
+                        <!--　パスワード -->
+                        <div class="form-outline form-white mb-4">
+                        <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                        <label class="form-label" for="password">パスワード</label>
+                        </div>
+        
+                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">パスワードを忘れましたか?</a></p>
+        
+                        <input class="btn btn-outline-light btn-lg px-5" type="submit" value="ログイン"/>
+                    </form>
+        
+                    <!-- 各種SNSログイン対応 -->
+                    <!-- <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                      <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                      <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                      <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                    </div> -->
+      
+                  </div>
+      
+                  <div>
+                    <p class="mb-0">アカウントを作りますか? <a href="/user/signup" class="text-white-50 fw-bold">新規アカウント作成</a>
+                    </p>
+                  </div>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- script -->
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
