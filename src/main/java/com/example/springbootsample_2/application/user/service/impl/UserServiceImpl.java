@@ -1,5 +1,7 @@
 package com.example.springbootsample_2.application.user.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class UserServiceImpl implements UserService{
         user.setDepartmentId(1); // 部署
         user.setRole("ROLE_GENERAL");   // ロール
         mapper.insertOne(user);
+    }
+
+    /** ユーザ取得 */
+    @Override
+    public List<MUser> getUsers() {
+        return mapper.findMany();
+    }
+
+    /** ユーザ取得（１件） */
+    @Override
+    public MUser getUserOne(String userId) {
+        return mapper.findOne(userId);
     }
     
 }
