@@ -73,21 +73,21 @@
     </select>
     
     <!-- ユーザ一件更新 -->
-    <!-- <update id="updateOne">
+    <update id="updateOne">
         update 
             m_user
         set
-            password = #{password},
-            user_name = #{userName}
+            password = #{user.password},
+            user_name = #{user.userName}
         where
-            user_id = #{userId}
-    </update> -->
+            user_id = #{user.userId}
+    </update>
 
     <!-- ユーザ一件削除 -->
-    <!-- <delete id="deleteOne">
+    <delete id="deleteOne">
         delete from
             m_user
         where
             user_id = #{userId}
-    </delete> -->
+    </delete>
 </mapper>
