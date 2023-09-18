@@ -23,11 +23,19 @@ public class UserDetailController {
     @Autowired
     private ModelMapper modelMapper;
 
+    /** ユーザ詳細画面を表示
+     * @param form
+     * @param model
+     * @param userId
+     * @return
+     */
     @GetMapping("/detail/{userId:.+}")
     public String getUser(UserDetailForm form,Model model,@PathVariable String userId){
         MUser user = userService.getUserOne(userId);
         user.setPassword("");
-        form = modelMapper.map(user,UserDetailForm.class );
+        form = modelMapper.map(user,UserDetailForm.class);
+        // System.out.println(user);
+        form.setSalaryList(user.getSalaryList());
         model.addAttribute("userDetailForm", form);
         return "/user/detail";
     }
