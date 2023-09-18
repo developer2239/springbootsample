@@ -50,7 +50,6 @@
     <!-- ユーザ複数件取得-->
     <select id="findMany" resultType="MUser">
         select * from m_user
-        <!-- select * from m_user
         <where>
             <if test="userId != null">
                 user_id like '%' || #{userId} || '%'
@@ -58,7 +57,7 @@
             <if test="userName != null">
                 and user_name like '%' || #{userName} || '%'
             </if>
-        </where> -->
+        </where>
     </select> 
 
     <!-- ユーザ1件取得-->

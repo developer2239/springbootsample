@@ -8,7 +8,7 @@ public interface UserService {
     /**  ユーザ登録 */
     public void signup(MUser user);
     /**  ユーザ取得 */
-    public List<MUser> getUsers();
+    public List<MUser> getUsers(MUser user);
     /**  ユーザ取得（１件）*/
     public MUser getUserOne(String userId);
     /** ユーザ更新 （１件）*/
