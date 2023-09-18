@@ -39,8 +39,14 @@
                         <td th:text="*{age}"></td>
                     </tr>
                     <tr>
-                        <th>年齢</th>
+                        <th>性別</th>
                         <td th:text="*{gender == 1 ? '男性' : '女性'}"></td>
+                    </tr>
+                    <tr>
+                        <th>部署</th>
+                        <span th:if="*{department != null}">
+                            <td th:text="*{department.departmentName}"></td>
+                        </span>
                     </tr>
                 </tbody>
             </table>
