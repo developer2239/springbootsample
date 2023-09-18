@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.springbootsample_2.application.repository.UserMapper;
 import com.example.springbootsample_2.application.user.model.MUser;
@@ -36,9 +37,14 @@ public class UserServiceImpl implements UserService{
     }
 
     /** ユーザ更新（１件） */
+    @Transactional
     @Override
     public void updateUserOne(MUser user) {
         mapper.updateOne(user);
+        // added error code intentionally
+        // int i = 1/0;
+        // added error code intentionally
+
     }
 
     /** ユーザ削除（１件） */

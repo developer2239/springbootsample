@@ -13,8 +13,11 @@ import com.example.springbootsample_2.application.form.UserDetailForm;
 import com.example.springbootsample_2.application.user.model.MUser;
 import com.example.springbootsample_2.application.user.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserDetailController {
 
     @Autowired
@@ -40,12 +43,21 @@ public class UserDetailController {
         return "/user/detail";
     }
 
+    /**　ユーザ情報更新処理、トランザクション完了後はリスト画面へリダイレクト
+     * @param form
+     * @param model
+     * @return
+     */
     @PostMapping(value="/detail", params="update")
     public String updateUser(UserDetailForm form,Model model){
         MUser user = userService.getUserOne(form.getUserId());
         user.setUserName(form.getUserName());
         user.setPassword(form.getPassword());
+        try{
         userService.updateUserOne(user);
+        } catch(Exception e) {
+            log.error("ユーザ更新処理でエラー",e);
+        }
         return "redirect:/user/list";
     }
 
