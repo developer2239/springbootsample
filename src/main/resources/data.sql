@@ -1,6 +1,3 @@
-INSERT INTO employee(id,name,age)
-VALUES('1','Tom',30);
-
 
 /*　ユーザマスタ */
 INSERT INTO m_user(
